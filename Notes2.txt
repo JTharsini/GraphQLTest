@@ -1,3 +1,5 @@
+IDE: VSCode
+
 1. initializing new node js project: (creates a package.json)
 npm init
 2. install apollo-server along with graphql support:
@@ -7,3 +9,21 @@ npm install nodemon
 4. npm start should execute index.js covered by nodemon:
 add "start": "nodemon index.js" in package.json
 5. add index.js
+6. npm start : to start app
+7. Apollo GraphQL extension for IDE: highlighting graphql
+
+project structure:
+-add schema folder: to keep type
+
+- http://localhost:4000/ in browser: can see server once npm start without crashes
+- apollo-server has built-in api tester ("Query your server" button)
+-in explorer gives the result:
+
+query GetAllUsers {
+  users {
+    name
+    username
+  }
+}
+
+-If one of the FakeData's mandatory field is null and requesting for that data ==> the query fails
