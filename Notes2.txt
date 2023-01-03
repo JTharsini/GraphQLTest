@@ -1,0 +1,9 @@
+1. initializing new node js project: (creates a package.json)
+npm init
+2. install apollo-server along with graphql support:
+npm install apollo-server graphql
+3. install nodemon to have hot deployment:
+npm install nodemon
+4. npm start should execute index.js covered by nodemon:
+add "start": "nodemon index.js" in package.json
+5. add index.js
