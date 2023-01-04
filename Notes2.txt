@@ -27,3 +27,57 @@ query GetAllUsers {
 }
 
 -If one of the FakeData's mandatory field is null and requesting for that data ==> the query fails
+-After change nationality to Enum (if nationality is non capital ==> error)
+-friends is not mandatory field. Then it can be null in the data.
+query GetAllUsers {
+  users {
+    name
+    username
+    nationality
+    friends {
+      id
+      name
+    }
+  }
+}
+-parent not used. Then replace it with _
+user: (parent, args) => {
+      const id = args.id;
+      const user = _.find(UserList, {id: id})
+      return user;
+    }
+==> 
+    user: (_, args) => {
+      const id = args.id;
+      const user = _.find(UserList, {id: id})
+      return user;
+    }
+Install lodash: npm install lodash
+- {id: id} ==> {id} (since key and value are same name (by JS)
+Comment in GraphQL: #
+---------------------------
+query GetUser($userId: ID!)
+{
+	user(id: $userId) {
+		name
+		username
+		friends {
+		  name
+		}
+	}
+}
+
+{
+  "userId": 1
+}
+
+is error. because, ID should be either number or string. But when resolvers receive the variable, it receive it as string.
+No match in lodash ==> id: Number(id) should be used.
+-users(){
+      return UserList;
+    }
+is same as
+    users: () => {
+      return UserList;
+    }
+-
